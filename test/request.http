@@ -1,0 +1,41 @@
+@server = http://localhost:4004
+@me = Authorization: Basic a2xhdXM6cGFzc19rbGF1cw==
+@content_type=Content-Type: application/json;IEEE754Compatible=true
+
+### ------------------------------------------------------------------------
+# Get incidents
+GET {{server}}/odata/v4/processor/Incidents
+{{me}}
+
+### ------------------------------------------------------------------------
+# Get Customers
+GET {{server}}/odata/v4/processor/Customers
+{{me}}
+
+
+### ------------------------------------------------------------------------
+# Create customer
+POST {{server}}/odata/v4/admin/Customers
+Content-Type: application/json
+Authorization: Basic a2xhdXM6cGFzc19rbGF1cw==
+Accept:*/*
+Accept-Encoding: gzip, deflate, br
+Connection : keep-alive
+
+{    
+    "ID": "1004101",
+    "firstName": "Prueba",
+    "lastName": "Prueba",
+    "email": "Prueba.Prueba@demo.com",
+    "phone": "+49-555-789",
+    "creditCardNo": null
+}
+
+### ------------------------------------------------------------------------
+# Create customer
+DELETE {{server}}/odata/v4/admin/Customers('1004101')
+Content-Type: application/json
+Authorization: Basic a2xhdXM6cGFzc19rbGF1cw==
+Accept:*/*
+Accept-Encoding: gzip, deflate, br
+Connection : keep-alive
